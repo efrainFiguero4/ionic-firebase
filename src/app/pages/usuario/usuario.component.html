@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Lista Usuarios</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-spinner name="lines" text-center *ngIf="!ls_usuarios?.length"></ion-spinner>
+	<ion-list *ngIf="ls_usuarios?.length">
+		<ion-item *ngFor="let usuario of ls_usuarios">
+			<ion-avatar slot="start" [routerLink]="['/editar', usuario.id]">
+				<img src="assets/img/person.png" alt="{{usuario.nombre}}">
+			</ion-avatar>
+			<ion-label [routerLink]="['/editar', usuario.id]">
+				<h2><b>Nombres: </b>{{usuario.nombre}}</h2>
+				<h3><b>Apellidos: </b>{{usuario.apellidos}}</h3>
+			</ion-label>
+			<ion-button item-end color="danger" shape="round" (click)="go_eliminarusuario(usuario)">
+				<ion-icon name="trash"></ion-icon>
+			</ion-button>
+		</ion-item>
+	</ion-list>
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+		<ion-fab-button [routerLink]="['/nuevo']">
+			<ion-icon name="add"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
+</ion-content>

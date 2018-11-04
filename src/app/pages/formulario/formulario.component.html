@@ -1,0 +1,30 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>{{accion}} Usuario</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<form id="form-usuario" #formusuario="ngForm">
+		<ion-item id="nombre">
+			<ion-label position="floating">
+				Nombre
+			</ion-label>
+			<ion-input type="text" required name="nombre" [(ngModel)]="usuario.nombre" placeholder=""></ion-input>
+		</ion-item>
+		<ion-item id="apellidos">
+			<ion-label position="floating">
+				Apellidos
+			</ion-label>
+			<ion-input type="text" required name="apellidos" [(ngModel)]="usuario.apellidos" placeholder=""></ion-input>
+		</ion-item>
+		<div padding-top text-center>
+			<ion-button color="success" shape="round" [disabled]="!formusuario.valid" (click)="guardar_usuario(formusuario.value)">
+				{{accion | uppercase}}
+			</ion-button>
+			<ion-button color="medium" shape="round" [routerLink]="['/usuario']">
+				{{'cancelar' | uppercase}}
+			</ion-button>
+		</div>
+	</form>
+</ion-content>
